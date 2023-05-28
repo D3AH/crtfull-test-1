@@ -93,11 +93,11 @@ function App() {
         <div className={`select-slider ${isItemSelected ? 'item-selected' : 'item-none'}`}>
           {items.map((_item, idx) => {
             let marginTop = (((idx-3)**2)/-32)*-200;
-            console.log(itemSelected.name);
+
             return (
               <div
                 key={idx}
-                className={`item ${_item.name == itemSelected.name ? 'selected' : null }`}
+                className={`item ${itemSelected && _item.name == itemSelected.name ? 'selected' : null }`}
                 style={{
                   transform: `rotate(${-12 + (idx * 4)}deg)`,
                   marginTop,
@@ -115,6 +115,13 @@ function App() {
           })}
         </div>
       </div>
+      { isItemSelected && (
+        <div className='text-center'>
+          <button type='action' className='primary-button'>
+            continue
+          </button>
+        </div>
+      )}
       <footer className='footer-navbar'>
         <a href="#">
           {'<'} Back

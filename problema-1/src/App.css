@@ -203,3 +203,28 @@ body {
 .test-primary-black {
   color: #222222
 }
+
+.primary-button {
+  cursor: pointer;
+
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14;
+  line-height: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  background-color: #222222;
+  border: 0;
+  border-radius: 2.5px;
+
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.primary-button:hover {
+  background-color: white;
+  color: #222222;
+}
