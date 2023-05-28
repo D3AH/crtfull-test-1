@@ -85,7 +85,7 @@ function App() {
             }
 
             return (
-              <div className={`step ${status}`}>
+              <div className={`step ${status}`} key={idx}>
                 <span>{idx}</span>
               </div>
             );
