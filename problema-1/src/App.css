@@ -147,7 +147,11 @@ body {
   transform: rotate(-12deg);
 }
 
-.select-slider .item:hover {
+.select-slider.item-selected .item:not(.selected) {
+  background-color: #E9E4DB !important;
+}
+
+.select-slider .item:hover:not(.selected) {
   background-color: white !important;
 }
 

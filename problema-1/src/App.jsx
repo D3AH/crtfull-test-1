@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [itemSelected, setItemSelected] = useState(null);
+  const [isItemSelected, setIsItemSelected] = useState(false);
+
+  useEffect(() => {
+    setIsItemSelected(itemSelected ? true : false);
+  }, [itemSelected]);
 
   const items = [
     {
@@ -44,6 +49,12 @@ function App() {
     }
   ];
 
+  console.log(isItemSelected);
+
+  const selectItem = function(item) {
+    setItemSelected(item);
+  }
+
   return (
     <>
       <nav id='navbar'>
@@ -79,24 +90,26 @@ function App() {
         <h1 className='text-center title'>
           How do you brew at home?
         </h1>
-        <div className="select-slider">
-          {items.map((item, idx) => {
+        <div className={`select-slider ${isItemSelected ? 'item-selected' : 'item-none'}`}>
+          {items.map((_item, idx) => {
             let marginTop = (((idx-3)**2)/-32)*-200;
+            console.log(itemSelected.name);
             return (
               <div
                 key={idx}
-                className='item'
+                className={`item ${_item.name == itemSelected.name ? 'selected' : null }`}
                 style={{
                   transform: `rotate(${-12 + (idx * 4)}deg)`,
                   marginTop,
-                  backgroundColor: item.color
+                  backgroundColor:  _item.color
                 }}
+                onClick={() => { selectItem(_item)}}
               >
                 <img
-                  src={item.image}
-                  alt={item.name}
+                  src={_item.image}
+                  alt={_item.name}
                 />
-                <h2>{item.name}</h2>
+                <h2>{_item.name}</h2>
               </div>
             );
           })}
