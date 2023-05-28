@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const [currentStep, setCurrentStep] = useState(2);
   const [itemSelected, setItemSelected] = useState(null);
   const [isItemSelected, setIsItemSelected] = useState(false);
 
@@ -49,9 +50,12 @@ function App() {
     }
   ];
 
-  console.log(isItemSelected);
+  const selectItemOrToggle = function(item) {
+    if (itemSelected && item.name == itemSelected.name) {
+      setItemSelected(null);
+      return;
+    }
 
-  const selectItem = function(item) {
     setItemSelected(item);
   }
 
@@ -68,68 +72,156 @@ function App() {
       </nav>
       <div className='main'>
         <div className="steps-bar">
-          <div className="step answered">
-            <span>1</span>
-          </div>
-          <div className="step current">
-            <span>2</span>
-          </div>
-          <div className="step">
-            <span>3</span>
-          </div>
-          <div className="step">
-            <span>4</span>
-          </div>
-          <div className="step">
-            <span>5</span>
-          </div>
-          <div className="step">
-            <span>6</span>
-          </div>
-        </div>
-        <h1 className='text-center title'>
-          How do you brew at home?
-        </h1>
-        <div className={`select-slider ${isItemSelected ? 'item-selected' : 'item-none'}`}>
-          {items.map((_item, idx) => {
-            let marginTop = (((idx-3)**2)/-32)*-200;
+          {Array.from({ length: 6 }).map((_, idx) => {
+            let status = null;
+            idx = idx + 1;
+
+            if (idx < currentStep) {
+              status = 'answered';
+            }
+
+            if (idx == currentStep) {
+              status = 'current';
+            }
 
             return (
-              <div
-                key={idx}
-                className={`item ${itemSelected && _item.name == itemSelected.name ? 'selected' : null }`}
-                style={{
-                  transform: `rotate(${-12 + (idx * 4)}deg)`,
-                  marginTop,
-                  backgroundColor:  _item.color
-                }}
-                onClick={() => { selectItem(_item)}}
-              >
-                <img
-                  src={_item.image}
-                  alt={_item.name}
-                />
-                <h2>{_item.name}</h2>
+              <div className={`step ${status}`}>
+                <span>{idx}</span>
               </div>
             );
           })}
         </div>
+        {currentStep == 2 && (
+          <>
+            <h1
+              className='text-center title margin-lg'
+            >
+              How do you brew at home?
+            </h1>
+            <div className={`select-slider ${isItemSelected ? 'item-selected' : 'item-none'}`}>
+              {items.map((_item, idx) => {
+                let marginTop = (((idx-3)**2)/-32)*-200;
+
+                return (
+                  <div
+                    key={idx}
+                    className={`item ${itemSelected && _item.name == itemSelected.name ? 'selected' : null }`}
+                    style={{
+                      transform: `rotate(${-12 + (idx * 4)}deg)`,
+                      marginTop,
+                      backgroundColor:  _item.color
+                    }}
+                    onClick={() => { selectItemOrToggle(_item)}}
+                  >
+                    <img
+                      src={_item.image}
+                      alt={_item.name}
+                    />
+                    <h2>{_item.name}</h2>
+                  </div>
+                );
+              })}
+            </div>
+            { isItemSelected && (
+              <div className='text-center'>
+                <button type='action' className='primary-button' onClick={() => setCurrentStep(7)}>
+                  continue
+                </button>
+              </div>
+            )}
+          </>
+        )}
+        {currentStep == 7 && (
+          <>
+            <h1 className='text-center text-lg title margin-bottom-md'>
+              Meet your new favorite coffee.
+            </h1>
+            <p className='text-center margin-bottom-md'>
+              Here’s what we recommend for your busy days, quiet moments, and upcoming adventures.
+            </p>
+            <div className='text-center margin-bottom-lg'>
+              <a href="#" style={{marginRight: '2rem'}}>
+                Email my results
+              </a>
+              <a href="#" onClick={() => { setCurrentStep(2) }}>
+                Retake the quiz
+              </a>
+            </div>
+            <table className='table-bestmatch'>
+              <tr>
+                <td
+                  rowSpan={2}
+                  className='text-center'
+                  style={{width: '32%'}}
+                >
+                  <h2 className='font-400 margin-top-0'>BEST MATCH</h2>
+                </td>
+                <td colSpan={4}>
+                  <p>WHY YOU’LL LOVE IT</p>
+                  <h3 className='font-400 text-md text-primary-black text-center margin-bottom-md'>
+                    If you’ve ever taken a bite from a ripe red apple, <br />
+                    you’ll know the way this coffee tastes. 
+                  </h3>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className='w-full text-center'>
+                    <p>Tasting Notes</p>
+                    <img src="/test-assets/tasting.png" alt="Brew" />
+                    <span>
+                      Red Apple,<br />
+                      Lemongrass,<br />
+                      Malt Chocolate
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div className='w-full text-center'>
+                    <p>roast level</p>
+                    <img src="/test-assets/roast.png" alt="Brew" />
+                    <span>
+                      Medium
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div className='w-full text-center'>
+                    <p>sipping style</p>
+                    <img src="/test-assets/sipping.png" alt="Brew" />
+                    <span>
+                      Great with <br />
+                      milk/cream
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div className='w-full text-center'>
+                    <p>brew method</p>
+                    <img src="/test-assets/brew.png" alt="Brew" />
+                    <span>
+                      Brews a delicious cup <br />
+                      with a pour over
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </>
+        )}
       </div>
-      { isItemSelected && (
-        <div className='text-center'>
-          <button type='action' className='primary-button'>
-            continue
-          </button>
-        </div>
-      )}
-      <footer className='footer-navbar'>
-        <a href="#">
-          {'<'} Back
-        </a>
-        <a href="#">
-          Why it matters +
-        </a>
-      </footer>
+      {
+        currentStep < 7 && (
+          <footer className='footer-navbar'>
+            <a href="#">
+              {'<'} Back
+            </a>
+            <a href="#">
+              Why it matters +
+            </a>
+          </footer>
+        )
+      }
     </>
   )
 }
