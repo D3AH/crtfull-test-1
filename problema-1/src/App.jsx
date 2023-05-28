@@ -136,10 +136,10 @@ function App() {
             <h1 className='text-center text-lg title margin-bottom-md'>
               Meet your new favorite coffee.
             </h1>
-            <p className='text-center margin-bottom-md'>
+            <p className='text-center margin-bottom-lmd'>
               Here’s what we recommend for your busy days, quiet moments, and upcoming adventures.
             </p>
-            <div className='text-center margin-bottom-lg'>
+            <div className='text-center margin-bottom-lmd2'>
               <a href="#" style={{marginRight: '2rem'}}>
                 Email my results
               </a>
@@ -151,10 +151,16 @@ function App() {
               <tr>
                 <td
                   rowSpan={2}
-                  className='text-center'
-                  style={{width: '32%'}}
+                  className='text-center box-1'
                 >
                   <h2 className='font-400 margin-top-0'>BEST MATCH</h2>
+                  <img
+                    className='w-full'
+                    src="/test-assets/coffee-product.png"
+                    alt="Coffe Product"
+                  />
+                  <h3>GUATEMALA COFFEE</h3>
+                  <h4>$ 20.50</h4>
                 </td>
                 <td colSpan={4}>
                   <p>WHY YOU’LL LOVE IT</p>
@@ -164,7 +170,7 @@ function App() {
                   </h3>
                 </td>
               </tr>
-              <tr>
+              <tr className='attributes'>
                 <td>
                   <div className='w-full text-center'>
                     <p>Tasting Notes</p>

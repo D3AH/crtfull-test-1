@@ -254,6 +254,14 @@ a {
   margin-bottom: 1rem;
 }
 
+.margin-bottom-lmd {
+  margin-bottom: 1.5rem;
+}
+
+.margin-bottom-lmd2 {
+  margin-bottom: 3.2rem;
+}
+
 .margin-bottom-lg {
   margin-bottom: 5rem;
 }
@@ -261,13 +269,54 @@ a {
 .table-bestmatch {
   background: rgba(34, 34, 34, 0.05);
   color: #222222;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  max-width: 1200px;
 }
 
 .table-bestmatch td {
-  padding: 1.5rem;
+  padding: 1.8rem;
   vertical-align: top;
+  border: 1.5px dashed #22222280;
+}
+
+.table-bestmatch .attributes td {
+  /* (100 - 32 (big box)) / 4 */
+  width: 16%
+}
+
+.table-bestmatch .box-1 {
+  border-bottom: none;
+  width: 32%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.table-bestmatch .box-1 h3
+{
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.table-bestmatch .box-1 h4 {
+  font-size: 1rem;
+}
+
+.table-bestmatch :first-child {
+  border-left: none;
+}
+
+.table-bestmatch :last-child {
+  border-right: none;
+}
+
+.table-bestmatch tr:first-child td {
+  border-top: none;
+}
+
+.table-bestmatch tr:last-child td {
+  border-bottom: none;
 }
 
 .table-bestmatch h2 {
@@ -285,11 +334,13 @@ a {
 
 .table-bestmatch p {
   font-size: 0.75rem;
-  line-height: 0.8rem;
+  line-height: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.16rem;
-  opacity: 0.7;
+  letter-spacing: 16%;
   font-weight: 400;
+  text-align: left;
+
+  opacity: 0.7;
 
   margin-bottom: 2.5rem;
 }
