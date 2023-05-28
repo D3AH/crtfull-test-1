@@ -57,10 +57,10 @@ function App() {
       </nav>
       <div className='main'>
         <div className="steps-bar">
-          <div className="step">
+          <div className="step answered">
             <span>1</span>
           </div>
-          <div className="step">
+          <div className="step current">
             <span>2</span>
           </div>
           <div className="step">
