@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -101,13 +99,14 @@ function App() {
             <div className={`select-slider ${isItemSelected ? 'item-selected' : 'item-none'}`}>
               {items.map((_item, idx) => {
                 let marginTop = (((idx-3)**2)/-32)*-200;
+                let transform = `rotate(${-12 + (idx * 4)}deg)`;
 
                 return (
                   <div
                     key={idx}
                     className={`item ${itemSelected && _item.name == itemSelected.name ? 'selected' : null }`}
                     style={{
-                      transform: `rotate(${-12 + (idx * 4)}deg)`,
+                      transform,
                       marginTop,
                       backgroundColor:  _item.color
                     }}
@@ -124,7 +123,11 @@ function App() {
             </div>
             { isItemSelected && (
               <div className='text-center'>
-                <button type='action' className='primary-button' onClick={() => setCurrentStep(7)}>
+                <button
+                  type='action'
+                  className='primary-button continue-button'
+                  onClick={() => setCurrentStep(7)}
+                >
                   continue
                 </button>
               </div>
@@ -148,70 +151,80 @@ function App() {
               </a>
             </div>
             <table className='table-bestmatch'>
-              <tr>
-                <td
-                  rowSpan={2}
-                  className='text-center box-1'
-                >
-                  <h2 className='font-400 margin-top-0'>BEST MATCH</h2>
-                  <img
-                    className='w-full'
-                    src="/test-assets/coffee-product.png"
-                    alt="Coffe Product"
-                  />
-                  <h3>GUATEMALA COFFEE</h3>
-                  <h4>$ 20.50</h4>
-                </td>
-                <td colSpan={4}>
-                  <p>WHY YOU’LL LOVE IT</p>
-                  <h3 className='font-400 text-md text-primary-black text-center margin-bottom-md'>
-                    If you’ve ever taken a bite from a ripe red apple, <br />
-                    you’ll know the way this coffee tastes. 
-                  </h3>
-                </td>
-              </tr>
-              <tr className='attributes'>
-                <td>
-                  <div className='w-full text-center'>
-                    <p>Tasting Notes</p>
-                    <img src="/test-assets/tasting.png" alt="Brew" />
-                    <span>
-                      Red Apple,<br />
-                      Lemongrass,<br />
-                      Malt Chocolate
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div className='w-full text-center'>
-                    <p>roast level</p>
-                    <img src="/test-assets/roast.png" alt="Brew" />
-                    <span>
-                      Medium
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div className='w-full text-center'>
-                    <p>sipping style</p>
-                    <img src="/test-assets/sipping.png" alt="Brew" />
-                    <span>
-                      Great with <br />
-                      milk/cream
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div className='w-full text-center'>
-                    <p>brew method</p>
-                    <img src="/test-assets/brew.png" alt="Brew" />
-                    <span>
-                      Brews a delicious cup <br />
-                      with a pour over
-                    </span>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td
+                    rowSpan={2}
+                    className='text-center box-1'
+                  >
+                    <h2 className='font-400 margin-top-0'>BEST MATCH</h2>
+                    <img
+                      className='w-full'
+                      src="/test-assets/coffee-product.png"
+                      alt="Coffe Product"
+                    />
+                    <h3>GUATEMALA COFFEE</h3>
+                    <h4>$ 20.50</h4>
+                  </td>
+                  <td colSpan={4}>
+                    <p>WHY YOU’LL LOVE IT</p>
+                    <h3 className='font-400 text-md text-primary-black text-center margin-bottom-md'>
+                      If you’ve ever taken a bite from a ripe red apple, <br />
+                      you’ll know the way this coffee tastes. 
+                    </h3>
+                  </td>
+                </tr>
+                <tr className='attributes'>
+                  <td>
+                    <div className='w-full text-center'>
+                      <p>Tasting Notes</p>
+                      <div className='img-and-text'>
+                        <img src="/test-assets/tasting.png" alt="Brew" />
+                        <span>
+                          Red Apple,<br />
+                          Lemongrass,<br />
+                          Malt Chocolate
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className='w-full text-center'>
+                      <p>roast level</p>
+                      <div className='img-and-text'>
+                        <img src="/test-assets/roast.png" alt="Brew" />
+                        <span>
+                          Medium
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className='w-full text-center'>
+                      <p>sipping style</p>
+                      <div className='img-and-text'>
+                        <img src="/test-assets/sipping.png" alt="Brew" />
+                        <span>
+                          Great with <br />
+                          milk/cream
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className='w-full text-center'>
+                      <p>brew method</p>
+                      <div className='img-and-text'>
+                        <img src="/test-assets/brew.png" alt="Brew" />
+                        <span>
+                          Brews a delicious cup <br />
+                          with a pour over
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </>
         )}

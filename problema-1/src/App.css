@@ -137,8 +137,9 @@ body {
 
 .select-slider {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 2.5rem;
 }
 
@@ -147,7 +148,6 @@ body {
   cursor: pointer;
   padding: 1.75rem;
   height: 100%;
-  transform: rotate(-12deg);
 }
 
 .select-slider.item-selected .item:not(.selected) {
@@ -195,75 +195,6 @@ a {
 
   padding-bottom: 0.8rem;
   margin-top: auto;
-}
-
-/* UTILS */
-
-.dark-beige {
-  background-color: #E9E4DB;
-}
-
-.text-primary-black {
-  color: #222222
-}
-
-.primary-button {
-  cursor: pointer;
-
-  color: white;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14;
-  line-height: 14px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-
-  background-color: #222222;
-  border: 0;
-  border-radius: 2.5px;
-
-  height: 40px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.primary-button:hover {
-  background-color: white;
-  color: #222222;
-}
-
-.text-lg {
-  font-size: 3rem;
-}
-
-.font-400 {
-  font-weight: 400;
-}
-
-.margin-lg {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.margin-md {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.margin-bottom-md {
-  margin-bottom: 1rem;
-}
-
-.margin-bottom-lmd {
-  margin-bottom: 1.5rem;
-}
-
-.margin-bottom-lmd2 {
-  margin-bottom: 3.2rem;
-}
-
-.margin-bottom-lg {
-  margin-bottom: 5rem;
 }
 
 .table-bestmatch {
@@ -357,6 +288,132 @@ a {
   font-family: 'Roboto';
 }
 
+/* MOVIL RULES */
+@media (max-width: 1199px) {
+  .main {
+    padding: 2rem !important;
+  }
+
+  .footer-navbar {
+    padding: 2rem !important;
+  }
+
+  .select-slider {
+    gap: 10px;
+  }
+
+  .select-slider .item {
+    transform: none !important;
+    margin-top: 0 !important;
+  }
+
+  .table-bestmatch tr {
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .table-bestmatch tr td {
+    flex: 1;
+    width: 100% !important;
+    padding: 2.5rem 1.5rem;
+
+    border: unset;
+    border-bottom: 1.5px dashed #22222280 !important;
+  }
+
+  .table-bestmatch tr:last-child td:last-child {
+    border-bottom: unset !important;
+  }
+
+  .table-bestmatch tr td .img-and-text
+  {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .table-bestmatch tr td .img-and-text img {
+    margin: 0;
+    margin-right: 2rem;
+  }
+
+  /* No se que compartamiento deberia tener el boton fijado en la pantalla */
+  /* .continue-button {
+    position: absolute;
+    bottom: 100px;
+  } */
+}
+
+/* UTILS */
+
+.dark-beige {
+  background-color: #E9E4DB;
+}
+
+.text-primary-black {
+  color: #222222
+}
+
+.primary-button {
+  cursor: pointer;
+
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14;
+  line-height: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  background-color: #222222;
+  border: 0;
+  border-radius: 2.5px;
+
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.primary-button:hover {
+  background-color: white;
+  color: #222222;
+}
+
+.text-lg {
+  font-size: 3rem;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.margin-lg {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.margin-md {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-md {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-lmd {
+  margin-bottom: 1.5rem;
+}
+
+.margin-bottom-lmd2 {
+  margin-bottom: 3.2rem;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 5rem;
+}
+
 .text-md {
   font-size: 1.3rem;
 }
@@ -368,3 +425,4 @@ a {
 .margin-top-0 {
   margin-top: 0;
 }
+
