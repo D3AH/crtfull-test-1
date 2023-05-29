@@ -26,8 +26,6 @@ const handleChange = function () {
     .querySelector('fieldset')
     .querySelector('label.pdp-variant-select-label-active').innerText;
 
-  console.log(size);
-
   if (typeof(size) == 'string') {
     size = size.trim();
   }
@@ -36,8 +34,6 @@ const handleChange = function () {
     .querySelector('form[action="/cart/add"')
     .querySelectorAll('[name="quantity"] '))
     .filter(e => !e.disabled)[0].valueAsNumber;
-
-  console.log(qty);
 
   if (!(
     size == '2T'
